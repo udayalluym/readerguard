@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readerguard"
+version = "0.2.0"
+description = "Check documents and web pages (PDF, HTML/URL, Office, Markdown, images) for hidden text, prompt injection and malicious content before RAG ingestion"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = ["pymupdf>=1.24.2", "numpy>=1.24", "pillow>=10", "defusedxml>=0.7"]
+
+[project.optional-dependencies]
+differential = ["pdfminer.six>=20231228"]
+ocr-mac = ["ocrmac>=1.0", "pillow"]
+bench = ["pdfminer.six>=20231228", "pdfplumber>=0.11", "python-docx", "python-pptx", "openpyxl",
+         "markitdown[all]>=0.1", "beautifulsoup4", "html2text", "docx2txt"]
+
+[project.scripts]
+readerguard = "readerguard.cli:main"
+
+[tool.setuptools]
+packages = ["readerguard", "readerguard.pdf", "readerguard.formats"]

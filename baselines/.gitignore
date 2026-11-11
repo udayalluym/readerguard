@@ -1,0 +1,4 @@
+.venv-*/
+phantom-lint/
+*.log
+status.txt
